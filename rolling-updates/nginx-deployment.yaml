@@ -6,14 +6,14 @@ metadata:
     app: nginx
   name: nginx
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: nginx
   strategy:
     rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+      maxSurge: 1
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -22,7 +22,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: nginx:1.7
+      - image: nginx:1.13.12
         name: nginx
         resources: {}
 status: {}
